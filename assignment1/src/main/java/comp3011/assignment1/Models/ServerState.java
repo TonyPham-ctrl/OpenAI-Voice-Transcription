@@ -19,6 +19,7 @@ public class ServerState {
     public void init() {
         this.utcServerStart = Instant.now();
         this.isRunning.set(true);
+        this.shuttingDown.set(false);
     }
 
     public Instant getUtcServerStart() {
@@ -27,6 +28,14 @@ public class ServerState {
 
     public boolean isRunning() {
         return isRunning.get();
+    }
+
+    public boolean isShuttingDown() {
+        return shuttingDown.get();
+    }
+
+    public void shutdown() {
+        shuttingDown.set(true);
     }
 
 }

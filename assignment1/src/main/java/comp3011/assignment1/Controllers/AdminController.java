@@ -26,7 +26,9 @@ public class AdminController {
 
     @PostMapping("/shutdown")
     public String shutdown() {
+        serverState.shutdown();
         return "Server shutting down...";
+        
     }
 
     @GetMapping("/uptime")
