@@ -35,6 +35,8 @@ public class AdminController {
 
     @GetMapping("/uptime")
     public UptimeResponse uptime() {
+        System.out.println("Handling on: " + Thread.currentThread());
+
         Instant start = serverState.getUtcServerStart();
         Instant now = Instant.now();
         double seconds = Duration.between(start, now).toNanos() / 1_000_000_000.0;
