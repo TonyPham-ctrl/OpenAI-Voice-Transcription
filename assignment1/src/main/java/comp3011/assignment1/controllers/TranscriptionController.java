@@ -1,4 +1,4 @@
-package comp3011.assignment1.Controllers;
+package comp3011.assignment1.controllers;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import comp3011.assignment1.Models.TranscriptionResponse;
-import comp3011.assignment1.Services.TranscriptionService;
+import comp3011.assignment1.models.TranscriptionResponse;
+import comp3011.assignment1.services.TranscriptionService;
 
 
 @RestController 
@@ -25,4 +25,6 @@ public class TranscriptionController {
         String text = transcriptionService.transcribe(file);
         return new TranscriptionResponse(text);
     }
+
+
 }

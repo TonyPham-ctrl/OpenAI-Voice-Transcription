@@ -1,17 +1,14 @@
-package comp3011.assignment1.Models;
+package comp3011.assignment1.models;
 
 import org.springframework.stereotype.Component;
 import java.time.Instant;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicLong;
 import jakarta.annotation.PostConstruct;
 
 
 @Component
 public class ServerState {
     private Instant utcServerStart;
-    private final AtomicLong inputTokens = new AtomicLong();
-    private final AtomicLong outputTokens = new AtomicLong();
     private final AtomicBoolean isRunning = new AtomicBoolean(true);
     private final AtomicBoolean shuttingDown = new AtomicBoolean(false);
 
