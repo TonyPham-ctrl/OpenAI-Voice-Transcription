@@ -25,7 +25,7 @@ requestStatsBtn.addEventListener('click', async () => {
 
 requestUptimeBtn.addEventListener('click', async () => {
     serverResponseForm.textContent = 'Fetching uptime...';
-    const res = await fetch('/api/uptime', {
+    const res = await fetch('/api/v1/admin/uptime', {
         method: 'GET'
     });
 
@@ -34,10 +34,8 @@ requestUptimeBtn.addEventListener('click', async () => {
 });
 
 requestShutdown.addEventListener('click', async () => {
-
     serverResponseForm.textContent = 'Sending shutdown request...';
-
-    const res = await fetch('/api/shutdown', {
+    const res = await fetch('/api/v1/admin/shutdown', {
         method: 'POST'
     });
 
