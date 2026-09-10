@@ -1,14 +1,14 @@
-package comp3011.assignment1.Controllers;
+package comp3011.assignment1.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import comp3011.assignment1.Models.UptimeResponse;
 import comp3011.assignment1.ServerStartTracker;
-import comp3011.assignment1.Models.ServerState
-;
+import comp3011.assignment1.models.ServerState;
+import comp3011.assignment1.models.UptimeResponse;
+
 import java.time.Instant;
 import java.time.Duration;
 
