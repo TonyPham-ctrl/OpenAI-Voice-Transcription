@@ -107,6 +107,7 @@ recordButton.addEventListener('click', async () => {
             
             updateRecordingUi(false);
             uploadButton.disabled = !recordedBlob || recordedBlob.size === 0;
+            uploadRecordedVoice();
         };
 
         mediaRecorder.start();
