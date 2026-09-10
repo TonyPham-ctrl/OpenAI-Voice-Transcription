@@ -17,13 +17,16 @@
       </header>
 
       <section class="panel grid">
-        <div class="card">
-          <h2>Upload Voice File</h2>
-          <label class="file-picker" for="voiceFile">
-            <span>Choose MP4</span>
-            <input id="voiceFile" type="file" accept=".mp4,audio/mp4,video/mp4" />
-          </label>
-          <button id="uploadButton" class="primary">Upload Voice</button>
+        <div class="card recording-card">
+          <h2>Record Voice</h2>
+          <div class="recording-status">
+            <span class="recording-dot"></span>
+            <span id="recordingText">Ready to record</span>
+          </div>
+          <div class="button-stack">
+            <button id="recordButton" class="primary">Start Recording</button>
+            <button id="finishButton" class="secondary">Finish Recording</button>
+          </div>
         </div>
 
         <div class="card">
