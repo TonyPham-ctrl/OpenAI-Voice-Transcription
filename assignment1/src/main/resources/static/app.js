@@ -14,7 +14,7 @@ const serverResponseForm = document.getElementById('serverOutput');
 
 requestStatsBtn.addEventListener('click', async () => {
     serverResponseForm.textContent = 'Fetching stats...';
-    const res = await fetch('/api/stats', {
+    const res = await fetch('/api/v1/global/stats', {
         method: 'GET'
     });
 
@@ -30,7 +30,7 @@ requestUptimeBtn.addEventListener('click', async () => {
     });
 
     const data = await res.json();
-    serverResponseForm.textContent = `Uptime: ${data.uptime}`;
+    serverResponseForm.textContent = `Uptime: ${data.serverUptimeSeconds}`;
 });
 
 requestShutdown.addEventListener('click', async () => {
