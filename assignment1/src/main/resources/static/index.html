@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voice Control Panel</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">Assignment 1</p>
+          <h1>Voice Control Panel</h1>
+        </div>
+        <div class="status-pill" id="connectionStatus">Offline</div>
+      </header>
+
+      <section class="panel grid">
+        <div class="card">
+          <h2>Upload Voice File</h2>
+          <label class="file-picker" for="voiceFile">
+            <span>Choose MP4</span>
+            <input id="voiceFile" type="file" accept=".mp4,audio/mp4,video/mp4" />
+          </label>
+          <button id="uploadButton" class="primary">Upload Voice</button>
+        </div>
+
+        <div class="card">
+          <h2>System Requests</h2>
+          <div class="button-stack">
+            <button id="statsButton">Request Stats</button>
+            <button id="uptimeButton">Request Uptime</button>
+            <button id="shutdownButton" class="danger">Request Shutdown</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel output-panel">
+        <div class="output-header">
+          <h2>Server Output</h2>
+          <button id="clearOutputButton" class="secondary small">Clear</button>
+        </div>
+        <pre id="serverOutput">Ready. Awaiting server response...</pre>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
