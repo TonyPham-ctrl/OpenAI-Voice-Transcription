@@ -59,3 +59,21 @@ uploadVoiceBtn.addEventListener('click', async () => {
     const data = await res.json();
     serverResponseForm.textContent = `Transcription: ${data.transcription}`;
 });
+
+async function checkServer() {
+  const pill = document.getElementById('connectionStatus');
+
+  try {
+    const res = await fetch('/api/v1/admin/running');
+    const isRunning = res.ok ? await res.json() : false;
+
+    pill.textContent = isRunning ? 'Online' : 'Offline';
+    pill.classList.toggle('online', isRunning);
+  } catch (error) {
+    pill.textContent = 'Offline';
+    pill.classList.remove('online');
+  }
+}
+
+setInterval(checkServer, 3000);
+checkServer();
