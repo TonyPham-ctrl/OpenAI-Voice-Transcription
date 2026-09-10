@@ -52,7 +52,8 @@ async function uploadRecordedVoice() {
     }
 
     const formData = new FormData();
-    formData.append('file', recordedBlob, 'recording.${ext}');
+    const ext = recordedBlob.type.split(';')[0].split('/')[1] || 'webm';
+    formData.append('file', recordedBlob, `recording.${ext}`);
 
     serverResponseForm.textContent = 'Uploading recorded voice...';
 
@@ -61,7 +62,11 @@ async function uploadRecordedVoice() {
             method: 'POST',
             body: formData
         });
-
+        if (!res.ok) {
+            throw new Error(`Server responded with status ${res.status}`);
+        } else{
+            serverResponseForm.textContent = 'Upload successful. Awaiting transcription...';
+        }
         const data = await res.json();
         serverResponseForm.textContent = `Transcription: ${data.transcribedText}`;
     } catch (error) {

@@ -13,4 +13,12 @@ public record OpenAiTranscriptionResponse(
         long outputTokens,
         long totalTokens
     ) {}
+
+    public String getText() {
+        return text;
+    }
+
+    public Usage getUsage() {
+        return usage;
+    }
 }

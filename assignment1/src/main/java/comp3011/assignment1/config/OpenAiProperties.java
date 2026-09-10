@@ -7,10 +7,18 @@ import org.springframework.stereotype.Component;
 public class OpenAiProperties {
     private String key;
     private String url;
+    private String model;
+
+    public OpenAiProperties() {
+        this.url = "https://api.openai.com/v1/audio/transcriptions";
+        this.model = "gpt-4o-mini-transcribe";
+    }
 
     public String getKey() { return key; }
-    public void setKey(String key) { this.key = key; }
-
+    public String getModel() { return model; }
     public String getUrl() { return url; }
+    public void setKey(String key) { this.key = key; }
+    public void setModel(String model) { this.model = model; }
     public void setUrl(String url) { this.url = url; }
+
 }

@@ -1,25 +1,23 @@
 package comp3011.assignment1.services;
 
 import org.springframework.stereotype.Service;
-import org.springframework.boot.jackson.autoconfigure.JacksonProperties.Json;
 import org.springframework.context.annotation.Profile;
 import org.springframework.web.multipart.MultipartFile;
 
+import comp3011.assignment1.models.OpenAiTranscriptionResponse;
 @Service
 @Profile("titan")
 public class OpenAiTranscriptionService implements TranscriptionService {
+
+    private final OpenAiClient openAiClient;
+
+    public OpenAiTranscriptionService(OpenAiClient openAiClient) {
+        this.openAiClient = openAiClient;
+    }
+
     @Override
     public String transcribe(MultipartFile audioFile) {
-        
-        return "real transcription";
-  
-  
-  
-  
-  public JsonObject buildJsonRequest(MultipartFile audioFile) {
-        JsonObject jsonRequest = new JsonObject();
-        jsonRequest.addProperty("model", "whisper-1");
-        jsonRequest.addProperty("file", audioFile.getOriginalFilename());
-        return jsonRequest;
+        OpenAiTranscriptionResponse response = openAiClient.handleRequest(audioFile);
+        return response.getText();
     }
 }
