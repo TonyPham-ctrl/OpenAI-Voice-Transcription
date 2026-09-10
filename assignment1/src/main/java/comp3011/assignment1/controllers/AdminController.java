@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import comp3011.assignment1.ServerStartTracker;
 import comp3011.assignment1.models.ServerState;
 import comp3011.assignment1.models.UptimeResponse;
 
@@ -20,7 +19,7 @@ public class AdminController {
 
     private final ServerState serverState;
 
-    public AdminController(ServerStartTracker serverStartTracker, ServerState serverState) {
+    public AdminController(ServerState serverState) {
         this.serverState = serverState;
     }
 

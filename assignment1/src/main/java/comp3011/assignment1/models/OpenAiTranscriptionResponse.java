@@ -9,9 +9,9 @@ public record OpenAiTranscriptionResponse(
 ) {
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record Usage(
-        long inputTokens,
-        long outputTokens,
-        long totalTokens
+        long input_tokens,
+        long output_tokens,
+        long total_tokens
     ) {}
 
     public String getText() {
