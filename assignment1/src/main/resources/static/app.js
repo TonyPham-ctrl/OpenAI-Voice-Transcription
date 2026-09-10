@@ -52,7 +52,7 @@ uploadVoiceBtn.addEventListener('click', async () => {
     const formData = new FormData();
     formData.append('client_voice_input', voiceFile.files[0]);
 
-    const res = await fetch('/api/transcribe', {
+    const res = await fetch('/api/v1/global/transcribe', {
         method: 'POST',
         body: formData
     });

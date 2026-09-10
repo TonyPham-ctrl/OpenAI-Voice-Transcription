@@ -28,6 +28,8 @@ public class AdminController {
     public String shutdown() {
         serverState.shutdown();
         return "Server shutting down...";
+
+        // kill threads and process
         
     }
 
