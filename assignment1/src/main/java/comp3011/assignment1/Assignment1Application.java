@@ -11,6 +11,8 @@ index.html
 styles.css
 
 GenAI is used to review code segments and assist in designing code structure and approaches for the rest of the repo, but not for generating code
+
+Github is here: https://github.com/TonyPham-ctrl/OpenAI-Voice-Transcription
 */
 
 
