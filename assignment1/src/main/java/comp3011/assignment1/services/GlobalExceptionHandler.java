@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
+import org.springframework.web.multipart.MultipartException;
 
 import comp3011.assignment1.models.ErrorResponse;
 
@@ -24,6 +25,20 @@ public class GlobalExceptionHandler {
             "Uploaded audio exceeds the maximum allowed size.",
             req.getRequestURI());
         return ResponseEntity.status(413).body(body);
+    }
+
+    // Body isn't multipart/form-data (or is malformed). MaxUploadSizeExceededException is a
+    // subclass, but the more specific handler above still wins for it.
+    @ExceptionHandler(MultipartException.class)
+    public ResponseEntity<ErrorResponse> handleNotMultipart(
+            MultipartException e, HttpServletRequest req) {
+        ErrorResponse body = new ErrorResponse(
+            Instant.now().toString(),
+            400,
+            "Bad Request",
+            "Request must be multipart/form-data with the audio in a 'file' part.",
+            req.getRequestURI());
+        return ResponseEntity.status(400).body(body);
     }
 
     @ExceptionHandler(Exception.class)

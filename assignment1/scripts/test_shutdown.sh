@@ -1,9 +1,4 @@
-#!/usr/bin/env bash
-# Graceful shutdown:
-#   - exactly one of several simultaneous requests gets 202, the others 409
-#   - an upload already in progress is allowed to finish
-#   - new connections are refused once shutdown starts
-#   - the process exits on its own with code 0
+
 source "$(dirname "$0")/lib.sh"
 
 UPLOAD_DELAY="${UPLOAD_DELAY:-5}"

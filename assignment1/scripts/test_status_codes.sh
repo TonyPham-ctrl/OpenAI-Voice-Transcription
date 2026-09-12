@@ -1,6 +1,4 @@
-#!/usr/bin/env bash
-# Every success and error status the API can return, with the response body shape for each.
-# 202 and 409 for shutdown are covered in test_shutdown.sh.
+
 source "$(dirname "$0")/lib.sh"
 
 start_fake_openai 0

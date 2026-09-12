@@ -1,7 +1,4 @@
-#!/usr/bin/env bash
-# Concurrency: overlapping uploads must run in parallel, page and API queries must not wait
-# behind them, and the token counters must stay exact.
-# Every fake OpenAI call takes $UPLOAD_DELAY seconds, standing in for real network time.
+
 source "$(dirname "$0")/lib.sh"
 
 UPLOADS="${UPLOADS:-20}"
