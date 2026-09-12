@@ -17,6 +17,7 @@ let recordedChunks = [];
 let isRecording = false;
 let recordedBlob = null;
 
+// Handles client-side logic and client-side API gateway to backend
 function updateRecordingUi(recording) {
     isRecording = recording;
     recordingCard.classList.toggle('recording', recording);
@@ -42,6 +43,7 @@ function resetRecorderState() {
 }
 
 async function uploadRecordedVoice() {
+    // check if anything is recorded at all, depreciated as previous version of the client side had an explicit upload button
     if (!recordedBlob || recordedBlob.size === 0) {
         serverResponseForm.textContent = 'No recorded audio available to upload.';
 
@@ -55,6 +57,7 @@ async function uploadRecordedVoice() {
 
     serverResponseForm.textContent = 'Uploading recorded voice...';
 
+    
     try {
         const res = await fetch('/api/v1/transcribe', {
             method: 'POST',
@@ -95,7 +98,9 @@ recordButton.addEventListener('click', async () => {
                 recordedChunks.push(event.data);
             }
         };
+        
 
+        // audio arrives in chunks, chunks are pushed into array recorded in mime type
         mediaRecorder.onstop = () => {
             recordedBlob = new Blob(recordedChunks, {
                 type: mediaRecorder.mimeType || 'audio/webm'
@@ -168,6 +173,7 @@ async function checkServer() {
     const res = await fetch('/api/v1/admin/running');
     const isRunning = res.ok ? await res.json() : false;
 
+    // updating pill colour depending on server's running state for fun and to visually represent when the server shuts down fully
     pill.textContent = isRunning ? 'Online' : 'Offline';
     pill.classList.toggle('online', isRunning);
   } catch (error) {

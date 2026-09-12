@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import comp3011.assignment1.models.ServerState;
 import comp3011.assignment1.models.OpenAiTranscriptionResponse;
+
+// Transcription server that abstracts the process of calling API and updating token usage
 @Service
 @Primary
 public class OpenAiTranscriptionService implements TranscriptionService {

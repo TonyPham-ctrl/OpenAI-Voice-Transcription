@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartException;
 
 import comp3011.assignment1.models.ErrorResponse;
 
+// Generalist exception handler that provides interface for repeating error responses and cause
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -27,8 +28,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(413).body(body);
     }
 
-    // Body isn't multipart/form-data (or is malformed). MaxUploadSizeExceededException is a
-    // subclass, but the more specific handler above still wins for it.
+
     @ExceptionHandler(MultipartException.class)
     public ResponseEntity<ErrorResponse> handleNotMultipart(
             MultipartException e, HttpServletRequest req) {

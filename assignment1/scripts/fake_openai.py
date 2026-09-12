@@ -1,14 +1,4 @@
-"""Stand-in for OpenAI's transcription endpoint so the tests are fast, free, and repeatable.
-
-Usage: EXPECTED_KEY=... FAKE_DELAY=3 python3 fake_openai.py <port>
-
-What it returns depends on marker text inside the uploaded audio bytes:
-  TRIGGER_401 -> 401 (as if the API key were rejected)
-  TRIGGER_429 -> 429 (rate limited)
-  TRIGGER_500 -> 500 (OpenAI outage)
-  anything else -> 200 with text + token usage, after FAKE_DELAY seconds
-A request without "Authorization: Bearer $EXPECTED_KEY" always gets 401, so a 200
-also proves the app sent the key correctly.
+"""Stand-in for OpenAI's transcription endpoint so the tests are fast, free, and repeatable,
 """
 import json
 import os

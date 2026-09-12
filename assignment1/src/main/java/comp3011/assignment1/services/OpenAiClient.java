@@ -12,6 +12,7 @@ import org.springframework.web.client.RestClient;
 import org.springframework.web.multipart.MultipartFile;
 
 
+// Client Object that handles communication with OpenAI
 @Component
 public class OpenAiClient {
     private final OpenAiProperties properties;
