@@ -29,8 +29,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGeneric(
             Exception e, HttpServletRequest req) {
-        // Spring's own exceptions (unknown path, wrong HTTP method, ...) carry their real status.
-        // Without this they'd be reported as 500 even though the client caused them.
+
         if (e instanceof org.springframework.web.ErrorResponse springError) {
             int status = springError.getStatusCode().value();
             HttpStatus known = HttpStatus.resolve(status);
