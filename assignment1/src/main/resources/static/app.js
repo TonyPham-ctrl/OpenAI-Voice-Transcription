@@ -1,7 +1,6 @@
 const connectionStatus = document.getElementById('connectionStatus');
 const recordButton = document.getElementById('recordButton');
 const finishButton = document.getElementById('finishButton');
-const uploadButton = document.getElementById('uploadButton');
 
 const requestStatsBtn = document.getElementById('statsButton');
 const requestUptimeBtn = document.getElementById('uptimeButton');
@@ -25,7 +24,6 @@ function updateRecordingUi(recording) {
 
     recordButton.disabled = recording;
     finishButton.disabled = !recording;
-    uploadButton.disabled = !recordedBlob;
 
     recordButton.textContent = recording ? 'Recording...' : 'Start Recording';
     finishButton.textContent = recording ? 'Stop Recording' : 'Stop Recording';
@@ -103,10 +101,7 @@ recordButton.addEventListener('click', async () => {
                 type: mediaRecorder.mimeType || 'audio/webm'
             });
 
-            serverResponseForm.textContent = 'Recording stopped. Ready to upload.';
-            
             updateRecordingUi(false);
-            uploadButton.disabled = !recordedBlob || recordedBlob.size === 0;
             uploadRecordedVoice();
         };
 
@@ -131,14 +126,6 @@ finishButton.addEventListener('click', () => {
     }
 });
 
-uploadButton.addEventListener('click', async () => {
-    if (!recordedBlob || recordedBlob.size === 0) {
-        serverResponseForm.textContent = 'Please record audio before attempting to upload.';
-        return;
-    }
-
-    await uploadRecordedVoice();
-});
 
 requestStatsBtn.addEventListener('click', async () => {
     serverResponseForm.textContent = 'Fetching stats...';

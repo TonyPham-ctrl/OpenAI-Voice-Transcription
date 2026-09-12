@@ -34,8 +34,12 @@ public class ServerState {
         return shuttingDown.get();
     }
 
-    public void shutdown() {
-        shuttingDown.set(true);
+    public boolean beginShutdown() {
+        boolean firstCaller = shuttingDown.compareAndSet(false, true);
+        if (firstCaller) {
+            isRunning.set(false);
+        }
+        return firstCaller;
     }
 
     public void incrementInputTokens(long tokens) {
